@@ -9,7 +9,7 @@ $encript = md5($pass);
 //Entra si está configurada la variable del formulario del login
 if(isset($_REQUEST['user'])){
 
-	$query = "SELECT * FROM tbl_usuarios WHERE nombre='$user'";
+	$query = "SELECT * FROM tbl_usuarios WHERE nombre='$user' AND password='$pass'";
 
 	$result = mysqli_query($conn,$query);
 	
@@ -19,6 +19,7 @@ if(isset($_REQUEST['user'])){
 		//Creo una nueva sesión y defino $_SESSION['nombre']
 		session_start();
 		$_SESSION['name']=$user;
+		$_SESSION['id']=$row['id'];
 		
 		//Voy a mi sitio personal
 		header("Location: ../misitio.php");

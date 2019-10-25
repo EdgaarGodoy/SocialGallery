@@ -17,13 +17,15 @@ if($_FILES["imagen"]["size"]>200000){
 $titulo = $_REQUEST['titulo'];
 $destination = "fotos/".basename($_FILES['imagen']['name']);
 $fecha = $_REQUEST['fecha'];
+session_start();
+$id_user=$_SESSION['id'];
 
 
 
 if(move_uploaded_file($_FILES['imagen']['tmp_name'], "../".$destination)){ //movemos el archivo
 	
 	//insertamos en la base de datos
-	mysqli_query($conn, "INSERT INTO tbl_gallery (name, ruta, date, id_usuario) VALUES ('$titulo','$destination','$fecha','4')");
+	mysqli_query($conn, "INSERT INTO tbl_gallery (name, ruta, date, id_usuario) VALUES ('$titulo','$destination','$fecha','$id_user')");
 
 
 	header("Location: ../misitio.php");

@@ -4,28 +4,30 @@
 	<title>Galería de imágenes</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="galeria.css">
+	<script type="text/javascript" src="js/codi.js"></script>
 </head>
-<body>
+<body style="background-image: url(./fotos/fondogaleria.jpg);">
 	<div style="text-align: right;">
 	<?php
 	include "./header.php";
 	?>	
 	</div>
-	<h1 style="margin-left: 25px;">Sitio personal de <?php echo $_SESSION['name']; ?></h1>
+	<center><h1 style="margin-left: 25px; background-color: white; width: 30%; border-radius: 10px;">Sitio personal de <?php echo $_SESSION['name']; ?></h1></center>
 
 	<!-- Formulario -->
 	
 	<div id="content">
 		<div id="pregunta"> 
-			<h2>Subir foto</h2>		
+			<h2 style="margin-left: 5px;">Subir foto</h2>		
 		</div>
+		<p style="color: white;" id="mensaje" class="mensaje"></p>
 		
-	<form method="post" enctype="multipart/form-data" action="./services/processa.php">
-		<input type="text" name="titulo" placeholder="Titulo..." required>
+	<form method="post" enctype="multipart/form-data" action="./services/processa.php" onsubmit="return paginap()">
+		<input type="text" name="titulo" id="titulo" placeholder="Titulo..." >
 		<br>
-		<input type="file" name="imagen" accept="image/png, image/jpg, image/jpeg, image/gif" placeholder="Imagen" required>
+		<input type="file" name="imagen" id="imagen" accept="image/png, image/jpg, image/jpeg, image/gif" placeholder="Imagen" >
 		<br>
-		<input type="date" name="fecha" placeholder="Fecha" required>
+		<input type="date" name="fecha" id="fecha"  placeholder="Fecha" >
 		<br>
 		<input type="submit" name="Enviar">
 </div>
@@ -37,7 +39,9 @@
 //Conexión a la base de datos
 include "./services/connection.php";
 //Seleccion y muestra de datos de la base de datos (bomitar la base de datos)
-$result = mysqli_query($conn, "SELECT tbl_gallery.name, tbl_gallery.ruta, tbl_gallery.date FROM tbl_gallery INNER JOIN tbl_usuarios ON tbl_usuarios.id=tbl_gallery.id_usuario WHERE tbl_gallery.id_usuario=4");
+$id_user=$_SESSION['id'];
+$sq="SELECT tbl_gallery.name, tbl_gallery.ruta, tbl_gallery.date FROM tbl_gallery WHERE id_usuario='$id_user'";
+$result = mysqli_query($conn, $sq);
  //WHERE tbl_gallery.id_usuario='"$_SESSION['id']."'
 
 if(!empty($result) && mysqli_num_rows($result)>0){
