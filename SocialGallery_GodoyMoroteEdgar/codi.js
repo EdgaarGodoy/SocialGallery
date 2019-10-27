@@ -25,34 +25,27 @@ function login(){
 	//Tercera validacion
 	function paginap(){
 		var titulo = document.getElementById('titulo').value;
-		var imagen = document.getElementById('imagen').value;
-		var fecha = document.getElementById('fecha').value;
+	var imagen = document.getElementById('imagen').value;
 
-
-		if (titulo == '' && imagen == '' && fecha == ''){
-			document.getElementById('mensaje').innerHTML = 'Todos los campos son obligatorios!';
-			document.getElementById('mensaje').style.display = 'block';
-			document.getElementById('titulo').style.border = '2px solid red';
-			document.getElementById('imagen').style.border = '2px solid red';
-			document.getElementById('fecha').style.border = '2px solid red';
-			return false;
-		}else if(titulo == '') {
-			document.getElementById('mensaje').innerHTML = 'El campo titulo es obligatorio!';
-			document.getElementById('mensaje').style.display = 'block';
-			document.getElementById('titulo').style.border = '2px solid red';
-			return false;
-		}else if(imagen == ''){
-			document.getElementById('mensaje').innerHTML = 'El campo imagen es obligatorio!';
-			document.getElementById('mensaje').style.display = 'block';
-			document.getElementById('imagen').style.border = '2px solid red';
-			return false;
-		}
-		else if(fecha == ''){
-			document.getElementById('mensaje').innerHTML = 'El campo fecha es obligatorio!';
-			document.getElementById('mensaje').style.display = 'block';
-			document.getElementById('fecha').style.border = '2px solid red';
-			return false;
-		}else{
-			return true;
-		}
+	if (titulo == '' && imagen == '') {
+		document.getElementById('mensaje').innerHTML = 'El campo titulo y imagen son obligatorios';
+		document.getElementById('mensaje').style.display = 'block';
+		document.getElementById('titulo').style.border = '1px solid #FF0000';
+		document.getElementById('imagen').style.border = '1px solid #FF0000';
+		return false;
+	}else if(titulo == ''){
+		document.getElementById('mensaje').innerHTML = 'El campo titulo es obligatorio';
+		document.getElementById('mensaje').style.display = 'block';
+		document.getElementById('titulo').style.border = '1px solid #FF0000';
+		document.getElementById('imagen').style.border = '1px solid #ccc';
+		return false;
+	}else if(imagen == ''){
+		document.getElementById('mensaje').innerHTML = 'El campo imagen es obligatorio';
+		document.getElementById('mensaje').style.display = 'block';
+		document.getElementById('titulo').style.border = '1px solid #ccc';
+		document.getElementById('imagen').style.border = '1px solid #FF0000';
+		return false;
+	}else{
+		return true;
 	}
+}

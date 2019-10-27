@@ -4,7 +4,7 @@
 	<title>Galería de imágenes</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="galeria.css">
-	<script type="text/javascript" src="js/codi.js"></script>
+	<script type="text/javascript" src="codi.js"></script>
 </head>
 <body style="background-image: url(./fotos/fondogaleria.jpg);">
 	<div style="text-align: right;">
@@ -26,8 +26,6 @@
 		<input type="text" name="titulo" id="titulo" placeholder="Titulo..." >
 		<br>
 		<input type="file" name="imagen" id="imagen" accept="image/png, image/jpg, image/jpeg, image/gif" placeholder="Imagen" >
-		<br>
-		<input type="date" name="fecha" id="fecha"  placeholder="Fecha" >
 		<br>
 		<input type="submit" name="Enviar">
 </div>
